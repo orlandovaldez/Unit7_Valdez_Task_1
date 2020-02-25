@@ -41,5 +41,43 @@ int main()
   cout << "\nCurrent Time: " << endl; // print current data in struct
   cout << t.Hour << ":" << t.Minute << ":" << t.Second << endl;
 
+  appDate a;
+  a.dayOfMonth = 23;
+  a.month = 01;
+  a.year = 1996;
+  cout << "\nCurrent Date: " << endl;
+  cout << a.month << "/" << a.dayOfMonth << "/" << a.year << endl;
+
+  event eOne;
+  eOne.eventName = "Birthday of Orlando";
+  eOne.isUrgent = true;
+  // set the event day 
+  eOne.eventDate.dayOfMonth = 24; //instance.memberStruct.memberVariable
+  eOne.eventDate.month = 2;
+  eOne.eventDate.year = 2020;
+  //set the event time
+  eOne.eventTime = t;// use data from t to populate e.One.eventTime
+  
+  // print all elements of the event, eOne, to the screen
+  cout << "\nElements in the event eOne: " << endl;
+  cout << "Event Name: " << eOne.eventName << endl;
+
+  string status = "";
+  eOne.isUrgent = true;
+  status = (eOne.isUrgent) ? "Yes" : "No";
+  cout << "Is the event Urgent: " << status << endl;
+
+  cout << "Day: " << eOne.eventDate.month << "/"
+                  << eOne.eventDate.dayOfMonth << "/"
+                  << eOne.eventDate.year;
+
+  cout << "Time; " << eOne.eventTime.Hour << ":"
+                   << eOne.eventTime.Minute << ":"
+                   << eOne.eventTime.Second;
+
+
+
+
+
   return 0;
 }
