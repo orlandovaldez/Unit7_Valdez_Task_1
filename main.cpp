@@ -4,80 +4,94 @@
 // 2-24-20
 
 #include <iostream>
+#include "appDate.h"
+#include "timeOfDay.h"
+#include "event.h"
+
 
 using namespace std;
-//declare structs above int main
 
-struct timeOfDay
+void createEvent(timeOfDay t, appDate a, event e)
 {
-  short Hour;
-  short Minute;
-  short Second;
-};
+  short h = 0, m = 0, s = 0;
+  short mo = 0, d =0;
+  int y = 0, decision = 0;
+  string urgent = "";
+  string eName = "";
 
-struct appDate
-{
-  short dayOfMonth;
-  short month;
-  int year;
-};
+  // time of day will be populated 
+  cout << "Enter Hour: " ;
+  cin >> h;
+  t.Hour = h;
 
-struct event
-{
-  string eventName;
-  timeOfDay eventTime;
-  appDate eventDate;
-  bool isUrgent;
-  //save space here for our toString() override
-};
+  cout << "Enter Minutes: ";
+  cin >> m;
+  t.Minute = m;
 
+  cout << "Enter Seconds: ";
+  cin >> s;
+  t.Second = m;
+
+  //appDate
+  cout << "Enter Month: ";
+  cin >> mo;
+  a.month = mo;
+
+  cout << "Enter Day: ";
+  cin >> d;
+  a.dayOfMonth = d;
+
+  cout << "Enter Year: ";
+  cin >> y;
+  a.year = y;
+
+  cout << "Enter Event Name: "; 
+  cin >> eName;
+  e.eventName = eName;
+
+  cout << "Is the event urgent? (1 = yes , 2 = no: )" ;
+
+  cin >> decision;
+  if(decision == 1)
+  {
+    e.isUrgent = true; 
+    urgent = "yes";
+  }
+  else if(decision == 2)
+  {
+    e.isUrgent = false;
+    urgent = "no";
+  }
+  else 
+  {
+    cout << "Invalid input";
+  }
+
+e.eventDate = a;
+
+e.eventTime = t;
+
+cout <<"\nEVENT DETAILS: "<<endl;
+cout << "Event name: " + e.eventName << endl;
+cout << "\nIs urgent: " << e.isUrgent << "-->" << urgent << endl;
+cout << e.tostring();
+
+
+
+}
 
 int main()
 {
-  timeOfDay t; // declare instance of the struct 
-  t.Hour = 7; // put data in the struct
-  t.Minute = 11;
-  t.Second = 17;
-  cout << "\nCurrent Time: " << endl; // print current data in struct
-  cout << t.Hour << ":" << t.Minute << ":" << t.Second << endl;
+  event eMain;
 
-  appDate a;
-  a.dayOfMonth = 23;
-  a.month = 01;
-  a.year = 1996;
-  cout << "\nCurrent Date: " << endl;
-  cout << a.month << "/" << a.dayOfMonth << "/" << a.year << endl;
+  timeOfDay tMain;
 
-  event eOne;
-  eOne.eventName = "Birthday of Orlando";
-  eOne.isUrgent = true;
-  // set the event day 
-  eOne.eventDate.dayOfMonth = 24; //instance.memberStruct.memberVariable
-  eOne.eventDate.month = 2;
-  eOne.eventDate.year = 2020;
-  //set the event time
-  eOne.eventTime = t;// use data from t to populate e.One.eventTime
-  
-  // print all elements of the event, eOne, to the screen
-  cout << "\nElements in the event eOne: " << endl;
-  cout << "Event Name: " << eOne.eventName << endl;
+  appDate dMain;
 
-  string status = "";
-  eOne.isUrgent = true;
-  status = (eOne.isUrgent) ? "Yes" : "No";
-  cout << "Is the event Urgent: " << status << endl;
-
-  cout << "Day: " << eOne.eventDate.month << "/"
-                  << eOne.eventDate.dayOfMonth << "/"
-                  << eOne.eventDate.year;
-
-  cout << "Time; " << eOne.eventTime.Hour << ":"
-                   << eOne.eventTime.Minute << ":"
-                   << eOne.eventTime.Second;
-
-
+  createEvent(tMain, dMain, eMain);
 
 
 
   return 0;
 }
+
