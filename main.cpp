@@ -26,14 +26,20 @@ struct event
 {
   string eventName;
   timeOfDay eventTime;
+  appDate eventDate;
   bool isUrgent;
+  //save space here for our toString() override
 };
 
 
 int main()
 {
-  
-
+  timeOfDay t; // declare instance of the struct 
+  t.Hour = 7; // put data in the struct
+  t.Minute = 11;
+  t.Second = 17;
+  cout << "\nCurrent Time: " << endl; // print current data in struct
+  cout << t.Hour << ":" << t.Minute << ":" << t.Second << endl;
 
   return 0;
 }
